@@ -1,11 +1,12 @@
 #include <iostream>
 #include <ctime>
 #include <cstdlib>
+#define SIZE 4 
 using namespace std;
 int** transformData(int topX, int topY, int p_count[10][10])
 {
-    int** crops=new int*[4];
-    int size[4]={0,0,0,0};
+    int** crops=new int*[SIZE];
+    int size[SIZE]={0,0,0,0};
 
     for (int i = 0; i < 10; i++)
     {
@@ -36,12 +37,12 @@ int** transformData(int topX, int topY, int p_count[10][10])
         }
     }
     
-    for(int k = 0; k< 4; k++)
+    for(int k = 0; k< SIZE; k++)
     {
         crops[k]=new int[size[k]+1];
     }
 
-    int index [4]= {0,0,0,0};
+    int index [SIZE]= {0,0,0,0};
 
     for (int i = 0; i < 10; i++)
     {
@@ -72,7 +73,7 @@ int** transformData(int topX, int topY, int p_count[10][10])
         }
     }
 
-    for(int k =0 ; k<4; k++)
+    for(int k =0 ; k<SIZE; k++)
     {
         crops[k][index[k]]=-1;
     }
@@ -102,7 +103,7 @@ int main()
 
     int ** result = transformData(topX, topY, p_count);
 
-    for(int k = 0; k < 4 ; k++)
+    for(int k = 0; k < SIZE ; k++)
     {
         cout <<"Crops " << k+1 << ": ";
         for(int i = 0; result[k][i]!=-1; i++)
@@ -112,7 +113,7 @@ int main()
         cout<<endl;
     }
 
-    for (int i = 0; i < 4; i++)
+    for (int i = 0; i < SIZE; i++)
     {
         delete result[i];
     }
